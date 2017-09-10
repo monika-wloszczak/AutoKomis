@@ -1,8 +1,55 @@
-.shapes{
-	float:left;
-	
+html{
+	margin: : 5%;
 }
-.insideBox{
-	background-color:grey;
-	color:white;
+body{
+	margin:0 auto;
+	height: 100%;
+	text-align: center;
+	background:rgba(179,220,238,1);
+	margin: 5%;
+	border-style: ridge;
+
+}
+
+
+p{
+	background-color: grey;
+	color: white;
+	text-align: center;
+}
+.shape{
+	float: left;
+	width:24%;
+	height: auto;
+	background-color: red;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	/*margin: 2px;
+    margin-left: 4px;
+}
+#collection{
+	margin-left: 15%;
+
+}*/
+ul{
+	display: inline;
+	list-style-type: none;
+}/*
+#brand{
+	display:grid;
+}
+div{
+	margin-left: 10%;
+	margin-right: 10%;
+}*/
+.choice{
+	font-size: 2em;
+
+}
+img{
+	max-height: 20%;
+}
+header{
+	background-color: green;
+	background-image: url("../resources/images/head.jpg");
 }

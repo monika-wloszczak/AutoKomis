@@ -1,25 +1,63 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="../css/loginstyle.css" rel="stylesheet" type="text/css">
-<title>AutoKomis</title>
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<meta charset = "UTF-8">
 </head>
 <body>
-	<div id="head">
-		<h1>Auto Komis</h1>
-	</div>
-	<div id="sedan" class="shapes">
-		<h4 class="insideBox">sedan</h4>
-	</div>
-	<div id="hatchback" class="shapes">
-		<h4 class="insideBox">hatchback</h4>
-	</div>
-	<div id="cabrio" class="shapes">
-		<h4 class="insideBox">cabrio</h4>
-	</div>
-	<div id="suv" class="shapes">
-		<h4 class="insideBox">suv</h4>
-	</div>
+<header>
+<div>
+<h1><img src="../resources/images/head111.png" style="opacity: 0.7">
+Auto Komis</h1>
+</div>
+</header>
+<div id="collection">
+<p class="choice">Find by car shape!</p>
+<div id ="combi" class="shape"><p> combi</p>
+<a href="#"><img src="../resources/images/combi.jpeg" alt="tekst alternatywny" /></a>
+</div>
+<div id="hatchback" class="shape"><p> hatchback</p>
+<a href="#"><img src="../resources/images/hatchback.jpg" alt="tekst alternatywny" /></a>
+</div>
+<div id="cabrio" class="shape"><p> cabrio</p>
+<a href="#"><img src="../resources/images/cabrio.jpg" alt="tekst alternatywny" /></a>
+</div>
+<div id="suv" class="shape">
+	<p> suv</p><a href="#"><img src="../resources/images/terenowe.jpg" alt="tekst alternatywny" /></a>
+</div>
+</div>
+
+
+<div id="brand">
+<p class="choice">Find by Brand name<p>
+<ul>
+	<li>Audi</li>
+<li>BMW</li>
+<li>Honda</li>
+<li>Hundai</li>
+<li>Mercedes</li>
+<li>Opel</li>
+<li>Toyota</li>
+</ul>
+</div>
+<p class="choice">Find by Engine size and Horsepower</p>
+<form action="" method="post">
+<label>Engine</label>
+<input type="text" name="engine" id="engine">
+<label>Horsepower</label>
+<input type="text" name="horsepower" id="horsepower">
+<input type="submit" name="submitEngine">
+</form>
+<p class="choice">Find by Price:</p>
+<form action="" method="post">
+	
+	<label>Lower than</label>
+	<input type="radio" id="lower">
+	<label>Higher than</label>
+	<input type="radio" id="lower">
+	<input type="text" name="price" id="price">
+<input type="submit" name="submitPrice">
+
+</form>
 </body>
 </html>
