@@ -1,9 +1,13 @@
+html{
+	margin: : 5%;
+}
 body{
 	margin:0 auto;
 	height: 100%;
 	text-align: center;
 	background:rgba(179,220,238,1);
 	margin: 5%;
+	border-style: ridge;
 
 }
 
@@ -16,7 +20,7 @@ p{
 .shape{
 	float: left;
 	width:24%;
-	height: 3em;
+	height: auto;
 	background-color: red;
 	margin-left: 0.5%;
 	margin-right: 0.5%;
@@ -27,8 +31,9 @@ p{
 	margin-left: 15%;
 
 }*/
-li{
+ul{
 	display: inline;
+	list-style-type: none;
 }/*
 #brand{
 	display:grid;
@@ -40,4 +45,11 @@ div{
 .choice{
 	font-size: 2em;
 
+}
+img{
+	max-height: 20%;
+}
+header{
+	background-color: green;
+	background-image: url("../resources/images/head.jpg");
 }

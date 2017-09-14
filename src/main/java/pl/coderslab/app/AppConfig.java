@@ -8,13 +8,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-
-
 
 @Configuration
 @EnableWebMvc
@@ -22,6 +22,12 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @EnableJpaRepositories("pl.coderslab.repository")
 public class AppConfig extends WebMvcConfigurerAdapter {
+
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
+
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -47,24 +53,29 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		return tm;
 	}
 
-//	@Override
-//	public void addFormatters(FormatterRegistry registry) {
-//		registry.addConverter(getUserConverter());
-//		registry.addConverter(getTweetConverter());
-//
-//	}
-//
-//	@Bean
-//	public UserConverter getUserConverter() {
-//
-//		return new UserConverter();
-//
-//	}
-//
-//	@Bean
-//	public TweetConverter getTweetConverter() {
-//
-//		return new TweetConverter();
-//
-//	}
+	@Bean
+	public MethodValidationPostProcessor methodValidationPostProcessor() {
+		return new MethodValidationPostProcessor();
+	}
+
+	// @Override
+	// public void addFormatters(FormatterRegistry registry) {
+	// registry.addConverter(getUserConverter());
+	// registry.addConverter(getTweetConverter());
+	//
+	// }
+	//
+	// @Bean
+	// public UserConverter getUserConverter() {
+	//
+	// return new UserConverter();
+	//
+	// }
+	//
+	// @Bean
+	// public TweetConverter getTweetConverter() {
+	//
+	// return new TweetConverter();
+	//
+	// }
 }

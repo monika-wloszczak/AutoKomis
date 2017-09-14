@@ -1,2 +1,14 @@
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/entity/Models.java
 /home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/app/AppInitializer.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/entity/Brand.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/converter/CarConverter.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/repository/CarRepository.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/repository/BrandRepository.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/entity/Car.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/entity/Check.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/repository/ModelRepository.java
 /home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/app/AppConfig.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/controller/CarController.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/converter/ModelConverter.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/controller/HomeController.java
+/home/monika/workspace/AutoKomis/src/main/java/pl/coderslab/converter/BrandConverter.java

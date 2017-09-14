@@ -1,0 +1,50 @@
+html{
+	margin: : 5%;
+}
+body{
+	margin:0 auto;
+	height: 100%;
+	text-align: center;
+	
+	background:linear-gradient(#FFFFFF, gray);
+	margin: 5%;
+	border-style: ridge;
+
+}
+
+
+p{
+	background-color: grey;
+	color: white;
+	text-align: center;
+	border-radius:10px;
+}
+.shape{
+	float: left;
+	width:24%;
+	height: auto;
+	background-color: red;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	border-radius:10px;
+	-webkit-box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
+-moz-box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
+box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
+
+	
+ul{
+	
+	list-style: none;
+}
+
+.choice{
+	font-size: 2em!important;
+
+}
+img{
+	max-height: 20%;
+}
+header{
+	
+	background-image: url("../resources/images/head.jpg");
+}

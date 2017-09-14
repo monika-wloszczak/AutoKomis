@@ -5,7 +5,8 @@ body{
 	margin:0 auto;
 	height: 100%;
 	text-align: center;
-	background:rgba(179,220,238,1);
+	
+	background:linear-gradient(#FFFFFF, gray);
 	margin: 5%;
 	border-style: ridge;
 
@@ -16,6 +17,7 @@ p{
 	background-color: grey;
 	color: white;
 	text-align: center;
+	border-radius:10px;
 }
 .shape{
 	float: left;
@@ -24,32 +26,25 @@ p{
 	background-color: red;
 	margin-left: 0.5%;
 	margin-right: 0.5%;
-	/*margin: 2px;
-    margin-left: 4px;
-}
-#collection{
-	margin-left: 15%;
+	border-radius:10px;
+	-webkit-box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
+-moz-box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
+box-shadow: 25px -1px 149px 30px rgba(255,255,255,1);
 
-}*/
+	
 ul{
-	display: inline;
-	list-style-type: none;
-}/*
-#brand{
-	display:grid;
+	
+	list-style: none;
 }
-div{
-	margin-left: 10%;
-	margin-right: 10%;
-}*/
+
 .choice{
-	font-size: 2em;
+	font-size: 2em!important;
 
 }
 img{
 	max-height: 20%;
 }
 header{
-	background-color: green;
+	
 	background-image: url("../resources/images/head.jpg");
 }
