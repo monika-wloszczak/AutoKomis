@@ -18,7 +18,7 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@Transient
+	
 	@NotEmpty
 	private String model;
 	@ManyToOne

@@ -9,7 +9,7 @@
 <title>Add a car:</title>
 </head>
 <body>
-
+<a href="showAll">Show All Cars</a>
 	<form:form method="post" modelAttribute="Car">
 		<form:errors path="*"></form:errors>
 		<p><form:label path="brand">brand</form:label>

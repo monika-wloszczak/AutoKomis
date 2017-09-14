@@ -18,25 +18,30 @@ table, tr, td {
 <body>
 	<header>
 		<div>
+		<a href="logout" style="float: right">Log Out</a>
 			<h1>
 
 				<img src="<c:url value="/resources/images/head111.png"/>"
 					style="opacity: 0.7"> Auto Komis
 			</h1>
-
+			
 		</div>
 	</header>
 	<table>
 		<c:forEach items="${findCars}" var="car">
 			<tr>
 				<td><c:out value="${car.brand}" /></td>
-				<td><c:out value="${car.models}" /></td>
+				<td><c:out value="${car.model}" /></td>
 				<td><c:out value="${car.shape}" /></td>
 				<td><c:out value="${car.engineSize}" /></td>
 				<td><c:out value="${car.horsepower}" /></td>
 				<td><c:out value="${car.price}" /></td>
-				<td><a href="remove/${car.id}">Remove</a></td>
-				<td><a href="update/${car.id}">Edit</a>
+				<c:choose>
+					<c:when test="${logged}">
+						<td><a href="remove/${car.id}">Remove</a></td>
+						<td><a href="update/${car.id}">Edit</a>
+					</c:when>
+				</c:choose>
 			</tr>
 
 		</c:forEach>

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
@@ -43,10 +45,20 @@ public class CarController {
 	@Autowired
 	private ModelRepository modelRepo;
 
-	@GetMapping("/add")
-	public String addForm(Model m) {
-		m.addAttribute("Car", new Car());
+	@RequestMapping("/addForm")
+	public String showForm() {
 		return "addForm";
+	}
+
+	@GetMapping("/add")
+	public String addForm(Model m, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession sess = request.getSession();
+		if (((String) sess.getAttribute("logged")).equals("true")) {
+			m.addAttribute("Car", new Car());
+			return "addForm";
+		} else {
+			return "/AutoKomis";
+		}
 	}
 
 	@PostMapping("/add")
@@ -79,48 +91,42 @@ public class CarController {
 				carRepo.save(Car);
 			}
 			return "accept";
-			// return "home";
+
 		}
 	}
 
-	// @GetMapping("/remove")
-	// public String removeForm(Model m){
-	// Car car = carRepo.findById(2);
-	// this.daoBook.delete(b);
-	// return "book deleted";
-	// m.addAttribute("Car", new Car());
-	// return "addForm";
-	// }
-	// @PostMapping("/add")
-	// public String removeForm(Model m){
-
 	@GetMapping("/login")
-	public String loginForm(Model m) {
+	public String loginForm(HttpServletRequest request) {
+		HttpSession sess = request.getSession();
+		System.out.println(sess.getAttribute("logged"));
+		if (sess.getAttribute("logged")==null) {
+			return "login";
+		} else {
+			return "redirect:/car/add";
+		}
 
-		return "login";
 	}
 
 	@PostMapping("/login")
-	public void postAddForm(HttpServletResponse response, Model m, @RequestParam String login,
-			@RequestParam String password) {
+	public String postAddForm(Model m, @RequestParam String login, @RequestParam String password) {
 		if (login.equals("admin") && password.equals("admin")) {
-
-			try {
-				response.sendRedirect("add");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+			m.addAttribute("logged", "true");
+			return "redirect:/car/setSession";
 		} else {
+			return "redirect:/car/login";
 
-			try {
-				response.sendRedirect("car/login");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
+	}
+
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession sess = request.getSession();
+		if ((String) sess.getAttribute("logged") == "true") {
+			System.out.println("aaaaaa");
+			sess.invalidate();
+		}
+		return "redirect:/";
+
 	}
 
 	@ModelAttribute("brand")
@@ -135,17 +141,11 @@ public class CarController {
 		return models;
 	}
 
-	@RequestMapping("/addForm")
-	public String showForm() {
-		return "addForm";
-	}
-
 	@RequestMapping("/byShape")
 	@Validated
 	public String returnView(Model model, @Valid Check check, BindingResult result, @RequestParam String shape) {
 
 		if (result.hasErrors()) {
-
 			return "/AutoKomis";
 		} else {
 			List<Car> cars = carRepo.findByShape(shape);
@@ -164,27 +164,27 @@ public class CarController {
 	}
 
 	@RequestMapping("/byHorsePowerOrEngine")
-	public void returnHPandSize(Model model, @RequestParam String horsepower, @RequestParam String engineSize,
+	public String returnHPandSize(Model model, @RequestParam String horsepower, @RequestParam String engineSize,
 			HttpServletResponse response) throws IOException {
 		try {
 			int horsepower1 = Integer.parseInt(horsepower);
 			int engineSize1 = Integer.parseInt(engineSize);
 			List<Car> cars = carRepo.findByHorsepowerGreaterThanAndEngineSizeGreaterThan(horsepower1, engineSize1);
 			model.addAttribute("findCars", cars);
-			response.sendRedirect("/AutoKomis/WEB-INF/views/brandView");
-
+			return "brandView";
 		} catch (NumberFormatException e) {
 			String cars = "Bledne dane";
-			
+
 			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
-			response.sendRedirect("/AutoKomis");
+			return "/AutoKomis";
+			//response.sendRedirect("/AutoKomis");
 
 		}
 
 	}
 
 	@RequestMapping("/byPrice")
-	public void returnPrice(Model model, @RequestParam String price, @RequestParam String how,
+	public String returnPrice(Model model, @RequestParam String price, @RequestParam String how,
 			HttpServletResponse response) throws IOException {
 		try {
 			double price1 = Double.parseDouble(price);
@@ -195,12 +195,14 @@ public class CarController {
 				cars = carRepo.findByPriceGreaterThan(price1);
 			}
 			model.addAttribute("findCars", cars);
-			response.sendRedirect("/AutoKomis/WEB-INF/views/brandView");
+			return "brandView";
+			//response.sendRedirect("/AutoKomis/WEB-INF/views/brandView");
 
 		} catch (NumberFormatException e) {
-			String cars = "Bledne dane";		
+			String cars = "Bledne dane";
 			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
-			response.sendRedirect("/AutoKomis");
+			return "/AutoKomis";
+			//response.sendRedirect("/AutoKomis");
 
 		}
 
@@ -208,11 +210,12 @@ public class CarController {
 
 	@RequestMapping("/remove/{id}")
 
-	public String removeCar(@PathVariable int id) {
+	public String removeCar(@PathVariable int id, HttpServletResponse response) throws IOException {
 		Car car = carRepo.findById(id);
 		this.carRepo.delete(car);
-		;
-		return "car/showAll";
+		return "redirect:/car/showAll";
+//		response.sendRedirect("/AutoKomis/car/showAll");
+
 	}
 
 	@RequestMapping("/showAll")
@@ -230,11 +233,42 @@ public class CarController {
 		return "addForm";
 	}
 
-	@PostMapping("/update")
+	@PostMapping("/update/{id}")
 
-	public String postForm(@ModelAttribute Car Car) {
+	public String postForm(@ModelAttribute Car Car, HttpServletResponse response) throws IOException {
+		String model = Car.getModel();
+		Brand brand = Car.getBrand();
+
+		boolean contain = false;
+		for (Models modell : modelRepo.findAll()) {
+			if ((model).equals(modell.getName())) {
+				Car.setModels(modell);
+				contain = true;
+				break;
+			}
+
+		}
+		if (contain == false) {
+			Models model1 = new Models(model, brand);
+			modelRepo.save(model1);
+			long id = model1.getId();
+			Models model2 = modelRepo.findById(id);
+			Car.setModels(model2);
+
+		}
 		this.carRepo.saveAndFlush(Car);
+		return "redirect:/car/showAll";
+//		response.sendRedirect("/AutoKomis/car/showAll");
+	}
 
-		return "car/showAll";
+	@RequestMapping("/setSession")
+	public String setSession(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession sess = request.getSession();
+
+		sess.setAttribute("logged", "true");
+		return "redirect:/car/add";
+		//response.sendRedirect("/AutoKomis/car/add");
+
 	}
 }

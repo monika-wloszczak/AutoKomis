@@ -9,12 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
-
-		Login:<input type="text" name="login" id="login"></input> 
-		password: <input type="password" name="password" id="password"></input> 
-		<input type="submit"></input>
-
-	</form>
+	<div id="panel">
+		<form method="post"><p>
+			<label for="login">Login:</label>
+			 <input type="text" name="login" id="login"/></p>
+				<p><label for="password">password:</label> <input
+				type="password" id="password" name="password" /></p>
+			<div id="lower">
+				<input type="submit" value="Login" />
+			</div>
+		</form>
+	</div>
 </body>
 </html>
