@@ -44,6 +44,20 @@ public class CarController {
 	private BrandRepository brandRepo;
 	@Autowired
 	private ModelRepository modelRepo;
+	
+	
+	
+	@ModelAttribute("brand")
+	public List<Brand> getBrand() {
+		List<Brand> brands = brandRepo.findAll();
+		return brands;
+	}
+
+	@ModelAttribute("models")
+	public List<Models> getModels() {
+		List<Models> models = modelRepo.findAll();
+		return models;
+	}
 
 	@RequestMapping("/addForm")
 	public String showForm() {
@@ -129,17 +143,7 @@ public class CarController {
 
 	}
 
-	@ModelAttribute("brand")
-	public List<Brand> getBrand() {
-		List<Brand> brands = brandRepo.findAll();
-		return brands;
-	}
-
-	@ModelAttribute("models")
-	public List<Models> getModels() {
-		List<Models> models = modelRepo.findAll();
-		return models;
-	}
+	
 
 	@RequestMapping("/byShape")
 	@Validated
@@ -175,9 +179,9 @@ public class CarController {
 		} catch (NumberFormatException e) {
 			String cars = "Bledne dane";
 
-			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
-			return "/AutoKomis";
-			//response.sendRedirect("/AutoKomis");
+			JOptionPane.showMessageDialog(new JFrame(), "Just numbers");
+			return "redirect:/";
+		
 
 		}
 
@@ -196,13 +200,13 @@ public class CarController {
 			}
 			model.addAttribute("findCars", cars);
 			return "brandView";
-			//response.sendRedirect("/AutoKomis/WEB-INF/views/brandView");
+	
 
 		} catch (NumberFormatException e) {
 			String cars = "Bledne dane";
-			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
-			return "/AutoKomis";
-			//response.sendRedirect("/AutoKomis");
+			JOptionPane.showMessageDialog(new JFrame(), "Give Numbers");
+			return "redirect:/";
+			
 
 		}
 
@@ -214,7 +218,7 @@ public class CarController {
 		Car car = carRepo.findById(id);
 		this.carRepo.delete(car);
 		return "redirect:/car/showAll";
-//		response.sendRedirect("/AutoKomis/car/showAll");
+
 
 	}
 
@@ -258,7 +262,7 @@ public class CarController {
 		}
 		this.carRepo.saveAndFlush(Car);
 		return "redirect:/car/showAll";
-//		response.sendRedirect("/AutoKomis/car/showAll");
+
 	}
 
 	@RequestMapping("/setSession")
@@ -268,7 +272,7 @@ public class CarController {
 
 		sess.setAttribute("logged", "true");
 		return "redirect:/car/add";
-		//response.sendRedirect("/AutoKomis/car/add");
+
 
 	}
 }
