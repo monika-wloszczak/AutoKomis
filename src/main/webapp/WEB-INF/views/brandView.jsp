@@ -18,13 +18,18 @@ table, tr, td {
 <body>
 	<header>
 		<div>
-		<a href="logout" style="float: right">Log Out</a>
+			<c:choose>
+				<c:when test="${logged}">
+					<a href="logout" style="float: right">Log Out</a>
+				</c:when>
+			</c:choose>
+
 			<h1>
 
 				<img src="<c:url value="/resources/images/head111.png"/>"
 					style="opacity: 0.7"> Auto Komis
 			</h1>
-			
+
 		</div>
 	</header>
 	<table>

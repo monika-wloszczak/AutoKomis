@@ -38,7 +38,7 @@
 		<div id="cabrio" class="shape">
 			<p>cabrio</p>
 			<a href="car/byShape?shape=cabrio"><img
-				src="<c:url value="/resources/images/cabrio.jpg"/>"
+				src="<c:url value="/resources/images/cabrio.jpeg"/>"	
 				alt="tekst alternatywny" /></a>
 		</div>
 		<div id="suv" class="shape">
@@ -76,7 +76,7 @@
 	<form action="car/byPrice" method="post">
 
 		<label>Lower than</label> 
-		<input type="radio" id="lower" name="how" value="lower"/> 
+		<input type="radio" id="lower" name="how" value="lower" checked/> 
 		<label>Higher than</label> 
 		<input type="radio"	id="higher" name="how" value="higher"/> 
 		<input type="text" name="price" id="price"/> 
