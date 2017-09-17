@@ -171,8 +171,9 @@ public class CarController {
 	public String returnHPandSize(Model model, @RequestParam String horsepower, @RequestParam String engineSize,
 			HttpServletResponse response) throws IOException {
 		try {
-			int horsepower1 = Integer.parseInt(horsepower);
-			int engineSize1 = Integer.parseInt(engineSize);
+			long horsepower1= Long.parseLong(horsepower);
+			
+			double engineSize1 = Double.parseDouble(engineSize);
 			List<Car> cars = carRepo.findByHorsepowerGreaterThanAndEngineSizeGreaterThan(horsepower1, engineSize1);
 			model.addAttribute("findCars", cars);
 			return "brandView";

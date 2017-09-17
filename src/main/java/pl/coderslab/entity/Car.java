@@ -29,6 +29,7 @@ public class Car {
 	private long horsepower;
 	private double price;
 	private String shape;
+	private int year;
 	
 	
 	public Car(){
@@ -37,6 +38,18 @@ public class Car {
 	
 	
 	
+	public int getYear() {
+		return year;
+	}
+
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+
 	public long getId() {
 		return id;
 	}
@@ -49,7 +62,13 @@ public class Car {
 
 
 
-	public Car(String model, Models models, Brand brand, double engineSize, long horsepower, double price, String shape) {
+	
+
+
+
+	
+	public Car(String model, Models models, Brand brand, double engineSize, long horsepower, double price, String shape,
+			int year) {
 		super();
 		this.model = model;
 		this.models = models;
@@ -57,12 +76,12 @@ public class Car {
 		this.engineSize = engineSize;
 		this.horsepower = horsepower;
 		this.price = price;
-		this.shape=shape;
+		this.shape = shape;
+		this.year = year;
 	}
 
 
 
-	
 	public String getShape() {
 		return shape;
 	}
@@ -123,12 +142,8 @@ public class Car {
 	@Override
 	public String toString() {
 		return "Car Model: " + models + ", brand:" + brand + ", engineSize=" + engineSize
-				+ ", horsepower=" + horsepower + ", price=" + price + ", shape=" + shape ;
+				+ ", horsepower=" + horsepower + ", price=" + price + ", shape=" + shape + ", year:" + year ;
 	}
-	
-	
-	
-	
-	
+		
 	
 }

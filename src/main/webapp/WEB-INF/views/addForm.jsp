@@ -29,6 +29,8 @@
 		Hatchback<form:radiobutton path="shape" value="hatchback" />
 		Cabrio<form:radiobutton path="shape" value="cabrio" />
 		SUV<form:radiobutton path="shape" value="suv" />
+		<p><form:label path="year">year</form:label>
+		<form:input type="number" path="year" id="year" /></p>
 		<input type="submit"></input>
 	</form:form>
 </body>

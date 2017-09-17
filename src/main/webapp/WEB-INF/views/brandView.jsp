@@ -33,6 +33,13 @@ table, tr, td {
 		</div>
 	</header>
 	<table>
+	<td>Brand</td>
+	<td>Model</td>
+	<td>Shape</td>
+	<td>Engine Size</td>
+	<td>horsePower</td>
+	<td>Year</td>
+	<td>Price</td>
 		<c:forEach items="${findCars}" var="car">
 			<tr>
 				<td><c:out value="${car.brand}" /></td>
@@ -40,6 +47,7 @@ table, tr, td {
 				<td><c:out value="${car.shape}" /></td>
 				<td><c:out value="${car.engineSize}" /></td>
 				<td><c:out value="${car.horsepower}" /></td>
+				<td><c:out value="${car.year}" /></td>
 				<td><c:out value="${car.price}" /></td>
 				<c:choose>
 					<c:when test="${logged}">
