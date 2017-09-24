@@ -276,4 +276,19 @@ public class CarController {
 
 
 	}
+	@GetMapping("/contact")
+	public String contactForm() {
+		
+			return "contact";
+		
+
+	}
+
+	@PostMapping("/contact")
+	@ResponseBody
+	public String postContactForm( @RequestParam String name, @RequestParam String lastName , @RequestParam String message) {
+		
+		return "thank you for contact" + name +" " + lastName;
+	}
+
 }

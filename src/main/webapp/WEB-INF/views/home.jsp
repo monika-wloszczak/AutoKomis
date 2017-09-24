@@ -20,6 +20,7 @@
 			</h1>
 			<a href="car/login" style=""right">Admin</a>
 		</div>
+		
 	</header>
 	<div id="collection">
 		<p class="choice">Find by car shape!</p>
@@ -83,5 +84,6 @@
 		<input type="submit" name="submitPrice"/>
 
 	</form>
+	<a href="car/contact">Sell your car!</a>
 </body>
 </html>
