@@ -49,6 +49,7 @@ table, tr, td {
 				<td><c:out value="${car.horsepower}" /></td>
 				<td><c:out value="${car.year}" /></td>
 				<td><c:out value="${car.price}" /></td>
+				<td><a href="https://www.google.pl/#q=${car.brand}+${car.model}+${car.year}">Show car</a></td>
 				<c:choose>
 					<c:when test="${logged}">
 						<td><a href="remove/${car.id}">Remove</a></td>
